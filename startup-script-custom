@@ -1,11 +1,18 @@
 #! /bin/bash
 
-curl -O http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb
-sudo dpkg -i cuda-repo-ubuntu1804_10.0.130-1_amd64.deb
-sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+# Add NVIDIA package repositories
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.1.243-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu1804_10.1.243-1_amd64.deb -y 
+sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
 sudo apt-get update -y 
-sudo apt-get install cuda -y 
+wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb 
+sudo apt install ./nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb -y
+sudo apt-get update -y 
 
+# Install NVIDIA driver
+sudo apt-get install --no-install-recommends nvidia-driver-430
+sudo apt-get install --no-install-recommends cuda-10-0
+# Install Ncudnn
 sudo dpkg -i libcudnn7_7.6.5.32-1+cuda10.0_amd64.deb
 
 sudo apt-get install python3-venv -y 

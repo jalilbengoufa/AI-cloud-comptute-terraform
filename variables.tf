@@ -77,11 +77,11 @@ variable "service_account_scopes" {
 
 // AI host
 variable "ai_image_family" {
-  default = "ubuntu-1804-lts"
+  default = "tf2-2-0-cu100"
 }
 
 variable "ai_image_project" {
-  default = "gce-uefi-images"
+  default = "deeplearning-platform-release"
 }
 
 variable "ai_machine_type" {

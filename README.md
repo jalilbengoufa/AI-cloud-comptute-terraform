@@ -1,13 +1,19 @@
 # AI-cloud-comptute-terraform
 
 
-### install Nvidia driver
-- curl -O http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb
-- sudo dpkg -i cuda-repo-ubuntu1804_10.0.130-1_amd64.deb -y 
-- sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
-- sudo apt-get update -y 
-- sudo apt-get install cuda -y 
-- nvidia-smi
+## install Nvidia driver
+### Add NVIDIA package repositories
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.1.243-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu1804_10.1.243-1_amd64.deb
+sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+sudo apt-get update
+wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
+sudo apt install ./nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
+sudo apt-get update
+
+# Install NVIDIA driver
+sudo apt-get install --no-install-recommends nvidia-driver-430
+
 
 ### install CUDNN
 - download from https://developer.nvidia.com/rdp/cudnn-download
@@ -22,20 +28,10 @@
 - curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3
 - poetry add keras
 - poetry add livelossplot
-- pip3 install tensorflow-gpu
+- poetry add tensorflow-gpu==1.14
 
 ### start jupyter notebook
 
-- jupyter notebook --generate-config
-
-- add
-```
-c = get_config()
-c.NotebookApp.ip = '*'
-c.NotebookApp.open_browser = False
-c.NotebookApp.port = 5000
-```
-- jupyter-notebook password
-- jupyter-notebook --no-browser --port=5000
+- jupyter-notebook --no-browser --port=5000 --ip='*'
 
 - http://<External Static IP Address>:5000

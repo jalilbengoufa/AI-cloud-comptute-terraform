@@ -40,16 +40,8 @@ resource "google_compute_instance" "default" {
     access_config {
      // Include this section to give the VM an external Ephemeral IP address 
     }
-
   }
-  provisioner "file" {
-    source = "libcudnn7_7.6.5.32-1+cuda10.0_amd64.deb"
-    destination = "/tmp/libcudnn7_7.6.5.32-1+cuda10.0_amd64.deb"
-  } 
-  provisioner "file" {
-    source = "startup-script-custom"
-    destination = "/tmp/startup-script-custom"
-  } 
+  
   scratch_disk {
     interface = "NVME"
   }
