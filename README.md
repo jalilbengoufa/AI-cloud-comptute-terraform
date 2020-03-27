@@ -32,6 +32,6 @@ sudo apt-get install --no-install-recommends nvidia-driver-430
 
 ### start jupyter notebook
 
-- jupyter-notebook --no-browser --port=5000 --ip='*'
+- jupyter-notebook --no-browser --port=5000 --ip='*' &
 
 - http://<External Static IP Address>:5000

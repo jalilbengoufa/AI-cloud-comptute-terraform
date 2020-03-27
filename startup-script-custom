@@ -19,3 +19,7 @@ sudo apt-get install python3-venv -y
 sudo apt install python3-pip -y 
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 10
 curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3
+
+
+git config --global user.email "jalilbengoufa@gmail.com"
+git config --global user.name "jalilbengoufa"
